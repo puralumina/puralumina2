@@ -31,20 +31,26 @@ const Header: React.FC = () => {
     <header className="fixed top-0 w-full z-50 bg-primary-black shadow-lg">
       <div className="container-max">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
+          {/* Mobile Menu Button - Left */}
+          <button
+            className="lg:hidden p-2 text-gray-300 hover:text-primary-orange transition-colors order-1"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Logo - Centered on mobile, left on desktop */}
+          <Link to="/" className="flex items-center space-x-3 group order-2 lg:order-1 absolute left-1/2 transform -translate-x-1/2 lg:relative lg:left-auto lg:transform-none">
             <img 
-              src="/src/images/logo.png" 
+              src="/images/logo.png" 
               alt={`${COMPANY_INFO.name} Logo`}
               className="h-10 w-auto transition-transform group-hover:scale-105"
             />
-            <span className="text-2xl font-bold text-white">
-              {COMPANY_INFO.name}
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8 order-2">
             {navItems.map((item) => (
               <Link
                 key={item.to}
@@ -60,8 +66,8 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* CTA Button Desktop */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* CTA Button Desktop - Hidden on mobile to make space */}
+          <div className="hidden lg:flex items-center space-x-4 order-3">
             <a 
               href={`tel:${COMPANY_INFO.phone}`}
               className="flex items-center space-x-2 text-gray-300 hover:text-primary-orange transition-colors"
@@ -74,14 +80,8 @@ const Header: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-gray-300 hover:text-primary-orange transition-colors"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile spacer to balance the layout */}
+          <div className="lg:hidden w-10 order-3"></div>
         </div>
 
         {/* Mobile Menu */}

@@ -14,13 +14,10 @@ const Footer: React.FC = () => {
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
               <img 
-                src="/src/images/logo.png" 
+                src="/images/logo.png" 
                 alt={`${COMPANY_INFO.name} Logo`}
                 className="h-10 w-auto"
               />
-              <span className="text-2xl font-bold text-white">
-                {COMPANY_INFO.name}
-              </span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Votre partenaire de confiance pour des services de centre d'appels francophones 
